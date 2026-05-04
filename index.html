@@ -1,51 +1,628 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        h1 {
-            margin: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAGARA – Web Development, AI Ads & Design Studio</title>
+  <meta
+    name="description"
+    content="SAGARA builds business websites, AI-powered ad creatives, logos, posters, and social media designs for small businesses, creators, and local brands."
+  />
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --surface-soft: #eef6f5;
+      --text: #1e293b;
+      --muted: #5b6470;
+      --border: #d8dfde;
+      --primary: #0f766e;
+      --primary-dark: #0a5b55;
+      --accent: #daf1ee;
+      --shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--primary-dark);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(247, 246, 242, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: var(--primary-dark);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: #f1f5f9;
+    }
+
+    .hero {
+      padding: 92px 0 72px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.7rem);
+      line-height: 1.05;
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 0 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .hero-point,
+    .card,
+    .project,
+    .about-box,
+    .contact-box,
+    .price-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-point {
+      padding: 18px;
+    }
+
+    .hero-point strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 19px;
+      color: var(--primary-dark);
+    }
+
+    .hero-visual {
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, #ffffff, #edf8f6);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .mini-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .mini-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .mini-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .mini-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .section-title {
+      max-width: 720px;
+      margin-bottom: 34px;
+    }
+
+    .section-title h2 {
+      margin: 0 0 12px;
+      font-size: 36px;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      padding: 26px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    .card p {
+      margin-bottom: 18px;
+      color: var(--muted);
+    }
+
+    .service-link {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .pricing-row {
+      margin-top: 24px;
+    }
+
+    .price-box {
+      padding: 22px;
+      background: #fdfefe;
+    }
+
+    .price-box strong {
+      display: block;
+      font-size: 22px;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project {
+      overflow: hidden;
+    }
+
+    .project-image {
+      height: 180px;
+      background: linear-gradient(135deg, #dff3f1, #f4eadf);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .project-content {
+      padding: 22px;
+    }
+
+    .project-content h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .project-content p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .about-box {
+      padding: 28px;
+    }
+
+    .about-box h3 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .about-box p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .about-box ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .contact-box {
+      padding: 32px;
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    footer {
+      padding: 28px 0 40px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .cards,
+      .projects,
+      .about-grid,
+      .hero-points {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+
+      .section-title h2 {
+        font-size: 30px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-actions,
+      .contact-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Website</h1>
-    </header>
-    <div class="container">
-        <p>Hello! This is my first website hosted on GitHub Pages.</p>
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">SAGARA</a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="btn btn-primary">Get a Quote</a>
+      </nav>
     </div>
-    <footer>
-        <p>&copy; 2026 My Website</p>
-    </footer>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="tag">Web Development • AI Ads • Design Studio</span>
+          <h1>Websites, AI-powered ads, and brand design for growing businesses.</h1>
+          <p>
+            SAGARA helps businesses build a strong online presence through modern websites, AI-powered ad creatives, logo design, posters, and social media visuals that look professional and drive more customer interest.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Get a Free Project Quote</a>
+            <a href="#work" class="btn btn-secondary">View Services</a>
+          </div>
+
+          <div class="hero-points">
+            <div class="hero-point">
+              <strong>Fast delivery</strong>
+              <span>Simple and modern creative work delivered with clarity and speed.</span>
+            </div>
+            <div class="hero-point">
+              <strong>AI-assisted workflow</strong>
+              <span>Smarter production helps reduce cost and speed up design output.</span>
+            </div>
+            <div class="hero-point">
+              <strong>Ernakulam based</strong>
+              <span>Focused on helping local brands, businesses, creators, and service providers.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="mini-card">
+            <h3>Business Websites</h3>
+            <p>Responsive websites and landing pages built for trust, speed, and mobile users.</p>
+          </div>
+          <div class="mini-card">
+            <h3>AI Ad Creatives</h3>
+            <p>Promotional concepts and visuals for Instagram, Facebook, and YouTube campaigns.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Brand & Design</h3>
+            <p>Custom logos, posters, and social media designs for a stronger business identity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Services</h2>
+          <p>
+            Clear, practical digital and creative services for small businesses, local brands, creators, and startups that want a better online image.
+          </p>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <h3>Website Development</h3>
+            <p>
+              Business websites, landing pages, service pages, and portfolio sites built with clean layouts, mobile-friendly structure, and fast loading performance.
+            </p>
+            <a href="#contact" class="service-link">Request this service</a>
+          </div>
+
+          <div class="card">
+            <h3>AI-Powered Ads & Creatives</h3>
+            <p>
+              AI-assisted ad concepts, banners, promo visuals, and campaign creatives for businesses promoting products or services online.
+            </p>
+            <a href="#contact" class="service-link">Request this service</a>
+          </div>
+
+          <div class="card">
+            <h3>Logo & Brand Design</h3>
+            <p>
+              Professional logo concepts, brand styling direction, and visual identity support to make your business look more polished and memorable.
+            </p>
+            <a href="#contact" class="service-link">Request this service</a>
+          </div>
+
+          <div class="card">
+            <h3>Poster & Social Media Design</h3>
+            <p>
+              Posters, event creatives, thumbnails, and social media designs for promotions, announcements, launches, and local campaigns.
+            </p>
+            <a href="#contact" class="service-link">Request this service</a>
+          </div>
+        </div>
+
+        <div class="pricing-row">
+          <div class="price-box">
+            <strong>Starting from ₹7,500 + GST</strong>
+            <span>Flexible pricing based on project size, features, and design requirements.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Portfolio</h2>
+          <p>
+            Real project samples can be added later. For now, this section shows the type of work SAGARA can deliver for businesses and creators.
+          </p>
+        </div>
+
+        <div class="projects">
+          <article class="project">
+            <div class="project-image">Website Demo</div>
+            <div class="project-content">
+              <h3>Business Landing Page</h3>
+              <p>
+                A clean service website concept built to showcase offers, trust points, and contact options for local businesses.
+              </p>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-image">Brand Design</div>
+            <div class="project-content">
+              <h3>Logo & Poster Concept</h3>
+              <p>
+                A sample branding package including logo direction and promotional poster layout for business marketing.
+              </p>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-image">Ad Creative</div>
+            <div class="project-content">
+              <h3>Social Media Promo Visual</h3>
+              <p>
+                A concept ad creative for online campaigns designed to grab attention and support lead generation.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>About SAGARA</h2>
+          <p>
+            SAGARA is a creative and digital service studio based in Ernakulam, focused on websites, AI ad creatives, and brand visuals for modern businesses.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-box">
+            <h3>Who we work with</h3>
+            <p>
+              We work with small businesses, local brands, startups, creators, service providers, and entrepreneurs who want a stronger digital presence.
+            </p>
+            <p>
+              Our goal is to make quality web and design work more accessible, professional, and affordable.
+            </p>
+          </div>
+
+          <div class="about-box">
+            <h3>Why choose us</h3>
+            <ul>
+              <li>Fast delivery and clear communication.</li>
+              <li>AI-assisted workflows for quicker execution.</li>
+              <li>Practical design for local and growing businesses.</li>
+              <li>Flexible service packages that can scale later.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="contact-box">
+          <div class="section-title" style="margin-bottom: 18px;">
+            <h2>Let’s Work Together</h2>
+            <p>
+              Need a website, ad creative, logo, poster, or full business design support? Contact SAGARA for a quick discussion and project quote.
+            </p>
+          </div>
+
+          <div class="contact-actions">
+            <a
+              href="https://wa.me/918089933994"
+              class="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Chat on WhatsApp
+            </a>
+            <a href="mailto:sanugopi007@gmail.com" class="btn btn-secondary">
+              Send an Email
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 SAGARA. Web development, AI creatives, and design services from Ernakulam.
+    </div>
+  </footer>
 </body>
 </html>
