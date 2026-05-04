@@ -3,24 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SAGARA – Web Development, AI Ads & Design Studio</title>
+  <title>TURUK – Web Development, AI Ads, AI Films & Design Studio</title>
   <meta
     name="description"
-    content="SAGARA builds business websites, AI-powered ad creatives, logos, posters, and social media designs for businesses, creators, and brands worldwide."
+    content="TURUK builds business websites, AI-powered ad creatives, AI films, logos, posters, and social media designs for businesses, creators, and brands worldwide."
   />
   <style>
     :root {
       --bg: #f7f6f2;
       --surface: #ffffff;
       --surface-soft: #eef6f5;
-      --text: #1e293b;
+      --text: #0f172a;
       --muted: #5b6470;
       --border: #d8dfde;
       --primary: #0f766e;
       --primary-dark: #0a5b55;
       --accent: #daf1ee;
-      --shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
-      --radius: 18px;
+      --accent-soft: #edf8f6;
+      --shadow-soft: 0 10px 28px rgba(15, 23, 42, 0.06);
+      --shadow-strong: 0 18px 42px rgba(15, 23, 42, 0.13);
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
       --max-width: 1120px;
     }
 
@@ -34,10 +38,12 @@
 
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: var(--bg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+                   "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #fdfdfb 0, #f7f6f2 38%, #edf2f4 100%);
       color: var(--text);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
@@ -50,6 +56,10 @@
       display: block;
     }
 
+    button {
+      font: inherit;
+    }
+
     .container {
       width: min(92%, var(--max-width));
       margin: 0 auto;
@@ -59,23 +69,45 @@
       padding: 80px 0;
     }
 
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
     .tag {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: var(--accent);
+      background: var(--accent-soft);
       color: var(--primary-dark);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
       margin-bottom: 18px;
     }
 
+    .tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.12);
+    }
+
+    /* Header / Nav */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(247, 246, 242, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(247, 246, 242, 0.96);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
 
@@ -84,14 +116,42 @@
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      padding: 16px 0;
+      padding: 14px 0;
     }
 
     .logo {
-      font-size: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 25% 0%, #22c55e 0, #0f766e 45%, #0a5b55 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e0f2f1;
+      font-size: 16px;
       font-weight: 800;
-      letter-spacing: 0.5px;
+      box-shadow: 0 0 18px rgba(15, 118, 110, 0.45);
+    }
+
+    .logo-text-main {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--primary-dark);
+    }
+
+    .logo-text-sub {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
     }
 
     .nav-links {
@@ -99,70 +159,122 @@
       align-items: center;
       gap: 20px;
       flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
     }
 
+    .nav-links a {
+      position: relative;
+      color: var(--muted);
+      padding-block: 4px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #0f766e, #22c55e);
+      transition: width 0.2s ease-out;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-dark);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
     .btn {
-      display: inline-block;
-      padding: 14px 22px;
-      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
       font-weight: 700;
-      transition: 0.25s ease;
+      font-size: 14px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
     }
 
     .btn-primary {
-      background: var(--primary);
+      background: linear-gradient(135deg, #0f766e, #0a5b55);
       color: #ffffff;
+      box-shadow: 0 12px 28px rgba(15, 118, 110, 0.35);
     }
 
     .btn-primary:hover {
-      background: var(--primary-dark);
+      transform: translateY(-1px);
+      background: linear-gradient(135deg, #0f766e, #065f46);
+      box-shadow: 0 14px 32px rgba(15, 118, 110, 0.4);
     }
 
     .btn-secondary {
-      background: transparent;
-      border: 1px solid var(--border);
+      background: #f8fafc;
+      border-color: var(--border);
       color: var(--text);
     }
 
     .btn-secondary:hover {
-      background: #f1f5f9;
+      background: #e2f3f0;
+      border-color: #bcd9d4;
     }
 
+    /* Hero */
     .hero {
-      padding: 92px 0 72px;
+      padding: 96px 0 72px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
       gap: 40px;
       align-items: center;
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 4.7rem);
+      font-size: clamp(2.6rem, 5vw, 3.9rem);
       line-height: 1.05;
       margin: 0 0 18px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(120deg, #0f766e, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero p {
-      font-size: 18px;
+      font-size: 17px;
       color: var(--muted);
-      max-width: 680px;
-      margin: 0 0 28px;
+      max-width: 650px;
+      margin: 0 0 24px;
     }
 
     .hero-actions {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 30px;
+      margin-bottom: 24px;
+    }
+
+    .hero-note {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 28px;
+    }
+
+    .hero-note strong {
+      color: var(--primary-dark);
     }
 
     .hero-points {
@@ -179,35 +291,60 @@
     .price-box {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.18s ease, box-shadow 0.2s ease, border-color 0.18s ease;
     }
 
     .hero-point {
-      padding: 18px;
+      padding: 16px 16px 14px;
+      font-size: 14px;
     }
 
     .hero-point strong {
       display: block;
-      margin-bottom: 6px;
-      font-size: 19px;
+      margin-bottom: 4px;
+      font-size: 16px;
       color: var(--primary-dark);
     }
 
+    .hero-point:hover {
+      transform: translateY(-2px);
+      border-color: #c3ddd8;
+      box-shadow: var(--shadow-strong);
+    }
+
+    /* Hero visual */
     .hero-visual {
-      padding: 28px;
-      border-radius: 28px;
-      background: linear-gradient(180deg, #ffffff, #edf8f6);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
+      padding: 26px 24px;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top left, #f3fbf9 0, #ffffff 38%, #edf6f5 100%);
+      border: 1px solid #d8e7e4;
+      box-shadow: 0 18px 40px rgba(148, 163, 184, 0.25);
+    }
+
+    .hero-visual-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #64748b;
+      margin-bottom: 10px;
+    }
+
+    .hero-visual-heading {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--primary-dark);
     }
 
     .mini-card {
       background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
-      margin-bottom: 16px;
+      border: 1px solid #dde7e4;
+      border-radius: var(--radius-md);
+      padding: 16px 16px 14px;
+      margin-bottom: 14px;
+      font-size: 14px;
     }
 
     .mini-card:last-child {
@@ -215,102 +352,145 @@
     }
 
     .mini-card h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
+      margin: 0 0 6px;
+      font-size: 16px;
     }
 
     .mini-card p {
       margin: 0;
       color: var(--muted);
-      font-size: 15px;
+      font-size: 14px;
     }
 
+    /* Section titles */
     .section-title {
       max-width: 720px;
-      margin-bottom: 34px;
+      margin-bottom: 30px;
     }
 
     .section-title h2 {
-      margin: 0 0 12px;
-      font-size: 36px;
+      margin: 0 0 10px;
+      font-size: 32px;
+      letter-spacing: -0.02em;
     }
 
     .section-title p {
       margin: 0;
       color: var(--muted);
-      font-size: 17px;
+      font-size: 16px;
     }
 
+    /* Services */
     .cards {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
     }
 
     .card {
-      padding: 26px;
+      padding: 24px 22px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, #ffffff 0, #f9fdfc 100%);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(13, 148, 136, 0.12), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: #c5dfd8;
+      box-shadow: var(--shadow-strong);
+    }
+
+    .card:hover::before {
+      opacity: 1;
     }
 
     .card h3 {
       margin-top: 0;
-      margin-bottom: 12px;
-      font-size: 22px;
+      margin-bottom: 10px;
+      font-size: 20px;
     }
 
     .card p {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       color: var(--muted);
+      font-size: 15px;
     }
 
     .service-link {
       color: var(--primary);
       font-weight: 700;
+      font-size: 14px;
     }
 
     .pricing-row {
       margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
     .price-box {
-      padding: 22px;
+      padding: 18px 20px;
       background: #fdfefe;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
 
     .price-box strong {
       display: block;
-      font-size: 22px;
+      font-size: 19px;
       color: var(--primary-dark);
-      margin-bottom: 8px;
     }
 
+    .price-box span {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Portfolio */
     .projects {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 22px;
     }
 
     .project {
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
     }
 
     .project-image {
-      height: 180px;
-      background: linear-gradient(135deg, #dff3f1, #f4eadf);
+      height: 170px;
+      background: linear-gradient(135deg, #e3f4f1, #f4eadf);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--primary-dark);
     }
 
     .project-content {
-      padding: 22px;
+      padding: 18px 18px 20px;
+      font-size: 14px;
     }
 
     .project-content h3 {
-      margin: 0 0 10px;
-      font-size: 21px;
+      margin: 0 0 8px;
+      font-size: 18px;
     }
 
     .project-content p {
@@ -318,50 +498,74 @@
       color: var(--muted);
     }
 
+    .project:hover {
+      transform: translateY(-3px);
+      border-color: #d3e1de;
+      box-shadow: var(--shadow-strong);
+    }
+
+    /* About */
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 24px;
     }
 
     .about-box {
-      padding: 28px;
+      padding: 24px 24px 22px;
     }
 
     .about-box h3 {
       margin-top: 0;
-      font-size: 24px;
+      font-size: 22px;
+      margin-bottom: 8px;
     }
 
     .about-box p {
       color: var(--muted);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
+      font-size: 15px;
     }
 
     .about-box ul {
       margin: 0;
       padding-left: 18px;
       color: var(--muted);
+      font-size: 15px;
     }
 
+    /* Contact */
     .contact-box {
-      padding: 32px;
+      padding: 28px 26px 26px;
+      background: linear-gradient(135deg, #f2fbf9, #ffffff);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-strong);
     }
 
     .contact-actions {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
-      margin-top: 20px;
+      margin-top: 18px;
     }
 
+    .contact-note {
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: 10px;
+    }
+
+    /* Footer */
     footer {
-      padding: 28px 0 40px;
+      padding: 26px 0 38px;
       text-align: center;
       color: var(--muted);
-      font-size: 15px;
+      font-size: 14px;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 10px;
     }
 
+    /* Responsive */
     @media (max-width: 920px) {
       .hero-grid,
       .cards,
@@ -377,17 +581,21 @@
       }
 
       .section {
-        padding: 64px 0;
+        padding: 68px 0;
+      }
+
+      .hero {
+        padding-top: 80px;
       }
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 640px) {
       .hero h1 {
         font-size: 2.3rem;
       }
 
       .section-title h2 {
-        font-size: 30px;
+        font-size: 28px;
       }
 
       .btn {
@@ -399,36 +607,65 @@
       .contact-actions {
         flex-direction: column;
       }
+
+      .hero-visual {
+        margin-top: 10px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <a href="#" class="logo">SAGARA</a>
-      <nav class="nav-links">
+      <a href="#" class="logo" aria-label="TURUK home">
+        <div class="logo-mark">T</div>
+        <div>
+          <div class="logo-text-main">TURUK</div>
+          <div class="logo-text-sub">Web • AI Ads • AI Films • Design</div>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
         <a href="#services">Services</a>
         <a href="#work">Work</a>
         <a href="#about">About</a>
-        <a href="#contact" class="btn btn-primary">Contact Us</a>
+        <a href="#contact" class="btn btn-primary">
+          Contact Us
+        </a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <!-- HERO -->
+    <section class="hero" id="top">
       <div class="container hero-grid">
         <div>
-          <span class="tag">Web Development • AI Ads • Design Studio</span>
-          <h1>Websites, AI-powered ads, and brand design for businesses worldwide.</h1>
+          <span class="tag">
+            <span class="tag-dot"></span>
+            Web Development • AI Ads • AI Films • Design Studio
+          </span>
+          <h1>
+            Websites, <span>AI-powered ads & films</span>, and brand design for businesses worldwide.
+          </h1>
           <p>
-            SAGARA helps businesses build a stronger online presence through modern websites, AI-powered ad creatives, logo design, posters, and social media visuals that look professional and attract more customers.
+            TURUK helps businesses build a stronger online presence through modern websites,
+            AI-powered ad creatives, AI films, logo design, posters, and social media visuals that look
+            professional and attract more customers.
           </p>
 
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">Get a Free Project Quote</a>
-            <a href="#services" class="btn btn-secondary">View Services</a>
+            <a href="#contact" class="btn btn-primary">
+              Get a Free Project Quote
+            </a>
+            <a href="#services" class="btn btn-secondary">
+              View Services
+            </a>
           </div>
+
+          <p class="hero-note">
+            <strong>Ideal for:</strong> small businesses, local brands, startups, creators,
+            and service providers who want a clear, modern online image with strong visuals and video.
+          </p>
 
           <div class="hero-points">
             <div class="hero-point">
@@ -441,12 +678,14 @@
             </div>
             <div class="hero-point">
               <strong>Global service available</strong>
-              <span>Working with businesses, creators, and brands across different locations.</span>
+              <span>Working with businesses, creators, and brands across locations.</span>
             </div>
           </div>
         </div>
 
-        <div class="hero-visual">
+        <aside class="hero-visual" aria-label="Overview of TURUK services">
+          <div class="hero-visual-label">What we focus on</div>
+          <div class="hero-visual-heading">Clean builds, clear messaging, strong visuals.</div>
           <div class="mini-card">
             <h3>Business Websites</h3>
             <p>Responsive websites and landing pages built for trust, speed, and mobile users.</p>
@@ -456,71 +695,93 @@
             <p>Promotional concepts and visuals for Instagram, Facebook, and YouTube campaigns.</p>
           </div>
           <div class="mini-card">
-            <h3>Brand & Design</h3>
-            <p>Custom logos, posters, and social media designs for a stronger business identity.</p>
+            <h3>AI Films & Video</h3>
+            <p>Short AI films and ad videos tailored for digital campaigns, reels, and promos.</p>
           </div>
-        </div>
+        </aside>
       </div>
     </section>
 
+    <!-- SERVICES -->
     <section id="services" class="section">
       <div class="container">
         <div class="section-title">
-          <h2>Services</h2>
+          <div class="section-label">Services</div>
+          <h2>Digital, video, and creative support for modern businesses</h2>
           <p>
-            Clear, practical digital and creative services for businesses, local brands, creators, and startups that want a stronger online image.
+            Clear, practical services for businesses, local brands, creators, and startups that
+            want a stronger online image, better visuals, and engaging AI-driven content. [web:114][web:119]
           </p>
         </div>
 
         <div class="cards">
-          <div class="card">
+          <article class="card">
             <h3>Website Development</h3>
             <p>
-              Business websites, landing pages, service pages, and portfolio sites built with clean layouts, mobile-friendly structure, and fast loading performance.
+              Business websites, landing pages, service pages, and portfolio sites built with clean
+              layouts, mobile-friendly structure, and fast loading performance.
             </p>
             <a href="#contact" class="service-link">Request this service</a>
-          </div>
+          </article>
 
-          <div class="card">
+          <article class="card">
             <h3>AI-Powered Ads & Creatives</h3>
             <p>
-              AI-assisted ad concepts, banners, promo visuals, and campaign creatives for businesses promoting products or services online.
+              AI-assisted ad concepts, banners, promo visuals, and campaign creatives for
+              businesses promoting products or services online across social and search.
             </p>
             <a href="#contact" class="service-link">Request this service</a>
-          </div>
+          </article>
 
-          <div class="card">
+          <article class="card">
+            <h3>AI Films & Video Content</h3>
+            <p>
+              Short AI films, ad films, explainer clips, and social media videos designed for
+              campaigns, product launches, and brand storytelling. Ideal for reels, shorts, and promos. [web:111][web:114][web:119]
+            </p>
+            <a href="#contact" class="service-link">Request this service</a>
+          </article>
+
+          <article class="card">
             <h3>Logo & Brand Design</h3>
             <p>
-              Professional logo concepts, brand styling direction, and visual identity support to make your business look more polished and memorable.
+              Professional logo concepts, brand styling direction, and visual identity support
+              to make your business look more polished and memorable.
             </p>
             <a href="#contact" class="service-link">Request this service</a>
-          </div>
+          </article>
 
-          <div class="card">
+          <article class="card">
             <h3>Poster & Social Media Design</h3>
             <p>
-              Posters, event creatives, thumbnails, and social media designs for promotions, announcements, launches, and local campaigns.
+              Posters, event creatives, thumbnails, and social media designs for promotions,
+              announcements, launches, and local campaigns.
             </p>
             <a href="#contact" class="service-link">Request this service</a>
-          </div>
+          </article>
         </div>
 
         <div class="pricing-row">
           <div class="price-box">
-            <strong>Contact Us</strong>
-            <span>Pricing depends on the type of project, scope of work, and design requirements.</span>
+            <strong>Flexible pricing</strong>
+            <span>
+              Pricing depends on the type of project, scope of work, and design or video requirements.
+              Share your budget range and we’ll suggest the best options.
+            </span>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- WORK -->
     <section id="work" class="section">
       <div class="container">
         <div class="section-title">
-          <h2>Portfolio</h2>
+          <div class="section-label">Portfolio</div>
+          <h2>Sample work and concept examples</h2>
           <p>
-            Project examples will be added later. This section is currently a placeholder to show the type of work SAGARA can provide.
+            Real client projects and concept pieces will be added here. For now, these examples
+            show the type of work TURUK can provide across web, design, ads, and AI films. [web:114]
           </p>
         </div>
 
@@ -530,7 +791,8 @@
             <div class="project-content">
               <h3>Business Website Concept</h3>
               <p>
-                A sample website layout for service businesses that need a clean online presence and a strong contact flow.
+                A sample website layout for service businesses that need a clean online presence
+                and a strong contact flow.
               </p>
             </div>
           </article>
@@ -540,17 +802,19 @@
             <div class="project-content">
               <h3>Logo & Poster Design</h3>
               <p>
-                A placeholder concept showing how branding and promotional design can be presented for business marketing.
+                A placeholder concept showing how branding and promotional design can be presented
+                for business marketing.
               </p>
             </div>
           </article>
 
           <article class="project">
-            <div class="project-image">Ad Creative</div>
+            <div class="project-image">AI Film Idea</div>
             <div class="project-content">
-              <h3>Social Media Promotion</h3>
+              <h3>AI Ad Film for Social</h3>
               <p>
-                A placeholder creative concept for ad visuals that support campaigns and customer engagement.
+                A concept for a short AI-generated video ad, built for reels and short-form platforms
+                to highlight offers and brand story. [web:111][web:114]
               </p>
             </div>
           </article>
@@ -558,46 +822,54 @@
       </div>
     </section>
 
+    <!-- ABOUT -->
     <section id="about" class="section">
       <div class="container">
         <div class="section-title">
-          <h2>About SAGARA</h2>
+          <div class="section-label">About</div>
+          <h2>About TURUK</h2>
           <p>
-            SAGARA is a creative and digital studio offering website development, AI ad creatives, and business design support for clients worldwide.
+            TURUK is a creative and digital studio offering website development, AI ad creatives,
+            AI films, and business design support for clients worldwide.
           </p>
         </div>
 
         <div class="about-grid">
-          <div class="about-box">
+          <article class="about-box">
             <h3>Who we work with</h3>
             <p>
-              We work with businesses, startups, creators, service providers, and entrepreneurs who want a stronger digital presence and better visual branding.
+              We work with businesses, startups, creators, service providers, and entrepreneurs
+              who want a stronger digital presence and better visual branding.
             </p>
             <p>
-              Our goal is to make quality web and design work more accessible, professional, and effective.
+              Our goal is to make quality web, design, and AI-driven video work more accessible,
+              professional, and effective.
             </p>
-          </div>
+          </article>
 
-          <div class="about-box">
+          <article class="about-box">
             <h3>Why choose us</h3>
             <ul>
               <li>Fast delivery and clear communication.</li>
-              <li>AI-assisted workflows for quicker execution.</li>
-              <li>Practical design for modern business needs.</li>
+              <li>AI-assisted workflows for quicker execution and content at scale. [web:117]</li>
+              <li>Practical design and video for modern business needs.</li>
               <li>Flexible service packages that can scale later.</li>
             </ul>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="section">
       <div class="container">
         <div class="contact-box">
-          <div class="section-title" style="margin-bottom: 18px;">
+          <div class="section-title" style="margin-bottom: 14px;">
+            <div class="section-label">Contact</div>
             <h2>Let’s Work Together</h2>
             <p>
-              Need a website, ad creative, logo, poster, or full business design support? Contact SAGARA for a quick discussion about your project.
+              Need a website, AI film, ad creative, logo, poster, or full business design support?
+              Contact TURUK for a quick discussion about your project.
             </p>
           </div>
 
@@ -614,6 +886,9 @@
               Send an Email
             </a>
           </div>
+          <p class="contact-note">
+            Share what you do, what you need (website, branding, ads, AI films, or a mix) and any deadlines.
+          </p>
         </div>
       </div>
     </section>
@@ -621,7 +896,7 @@
 
   <footer>
     <div class="container">
-      © 2026 SAGARA. Web development, AI creatives, and design services with global availability.
+      © 2026 TURUK. Web development, AI creatives, AI films, and design services with global availability.
     </div>
   </footer>
 </body>
