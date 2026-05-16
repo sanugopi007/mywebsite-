@@ -21,11 +21,6 @@
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=zodiak@400,500,700&display=swap" rel="stylesheet" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2301696f'/%3E%3Cpath d='M16 18h32v8H36v20h-8V26H16z' fill='%23f9f8f4'/%3E%3C/svg%3E" />
   <style>
-    /* Art direction: premium small-business creative studio → calm, credible, modern
-       Palette: warm neutral surfaces with restrained teal accent
-       Typography: Zodiak + General Sans for editorial confidence and clean readability
-       Density: balanced with spacious hero and compact service sections */
-
     :root,
     [data-theme="light"] {
       --text-xs: clamp(0.75rem, 0.72rem + 0.2vw, 0.875rem);
@@ -68,6 +63,7 @@
       --radius-sm: 0.5rem;
       --radius-md: 1rem;
       --radius-lg: 1.5rem;
+      --radius-xl: 2rem;
       --radius-full: 999px;
       --content-default: 1120px;
       --font-body: 'General Sans', 'Inter', sans-serif;
@@ -226,6 +222,7 @@
     }
 
     .brand-name {
+      display: block;
       font-size: 1.05rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -233,6 +230,7 @@
     }
 
     .brand-sub {
+      display: block;
       color: var(--color-text-muted);
       font-size: var(--text-xs);
       letter-spacing: 0.08em;
@@ -310,9 +308,9 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
       gap: clamp(var(--space-8), 5vw, var(--space-16));
-      align-items: end;
+      align-items: center;
     }
 
     .hero-copy h1,
@@ -322,7 +320,8 @@
     .service-card h3,
     .work-card h3,
     .process-step h3,
-    .trust-item h3 {
+    .trust-item h3,
+    .hero-value-card h3 {
       font-family: var(--font-display);
       font-weight: 500;
       letter-spacing: -0.03em;
@@ -341,8 +340,6 @@
       color: var(--color-text-muted);
     }
 
-    .hero-copy strong { color: var(--color-text); }
-
     .hero-actions,
     .contact-actions {
       display: flex;
@@ -356,15 +353,20 @@
       font-size: var(--text-sm);
     }
 
-    .hero-panel {
+    .hero-side {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .hero-summary {
+      padding: clamp(var(--space-6), 4vw, var(--space-8));
+      border-radius: var(--radius-xl);
       background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, white), var(--color-surface-2));
       border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      padding: clamp(var(--space-6), 4vw, var(--space-8));
       box-shadow: var(--shadow-lg);
     }
 
-    .hero-panel-top {
+    .hero-summary-top {
       display: flex;
       justify-content: space-between;
       gap: var(--space-4);
@@ -398,63 +400,29 @@
       letter-spacing: 0.08em;
     }
 
-    .panel-stack {
+    .hero-value-grid {
       display: grid;
+      grid-template-columns: 1fr;
       gap: var(--space-4);
     }
 
-    .panel-card {
-      border: 1px solid var(--color-border);
-      border-radius: calc(var(--radius-lg) - var(--space-4));
-      background: var(--color-surface);
+    .hero-value-card {
       padding: var(--space-5);
+      border-radius: var(--radius-md);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
     }
 
-    .panel-card h3 {
+    .hero-value-card h3 {
       margin: 0 0 0.35rem;
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: 1.1rem;
     }
 
-    .panel-card p {
+    .hero-value-card p {
       margin: 0;
       color: var(--color-text-muted);
       font-size: var(--text-sm);
-    }
-
-    .image-frame {
-      margin: 0;
-      border: 1px solid var(--color-border);
-      border-radius: calc(var(--radius-lg) - var(--space-4));
-      background: var(--color-surface);
-      padding: var(--space-4);
-    }
-
-    .section-image,
-    .work-image {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-      background: var(--color-surface-offset);
-    }
-
-    .section-image {
-      aspect-ratio: 4 / 3;
-      border-radius: calc(var(--radius-md) + 0.1rem);
-    }
-
-    .work-image {
-      aspect-ratio: 3 / 2;
-      border-radius: var(--radius-md);
-      margin-bottom: var(--space-5);
-    }
-
-    .image-frame figcaption {
-      margin-top: var(--space-3);
-      color: var(--color-text-muted);
-      font-size: var(--text-xs);
-      line-height: 1.5;
     }
 
     .trust-strip {
@@ -516,7 +484,8 @@
       gap: var(--space-5);
     }
 
-    .services-grid {
+    .services-grid,
+    .work-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -586,10 +555,6 @@
       border-top: 1px solid var(--color-divider);
       color: var(--color-text-muted);
       font-size: var(--text-sm);
-    }
-
-    .work-grid {
-      grid-template-columns: 1.15fr 0.85fr;
     }
 
     .work-card.featured {
@@ -697,10 +662,10 @@
         border-top: 1px solid var(--color-divider);
       }
       .hero-grid,
-      .work-grid,
-      .quote-grid,
       .services-grid,
+      .work-grid,
       .process-grid,
+      .quote-grid,
       .trust-strip,
       .footer-grid {
         grid-template-columns: 1fr;
@@ -727,6 +692,9 @@
       }
       .theme-toggle {
         border-radius: var(--radius-full);
+      }
+      .hero-summary-top {
+        flex-direction: column;
       }
     }
   </style>
@@ -810,38 +778,35 @@
           <p class="hero-meta">Free project discussion • Clear scope before work starts • Flexible for small businesses and creators</p>
         </div>
 
-        <aside class="hero-panel" aria-label="Studio focus overview">
-          <div class="hero-panel-top">
-            <div>
-              <div class="panel-label">What TURUK delivers</div>
-              <div class="panel-title">Credible digital presence, stronger visuals, and faster creative execution.</div>
+        <aside class="hero-side" aria-label="Studio focus overview">
+          <div class="hero-summary">
+            <div class="hero-summary-top">
+              <div>
+                <div class="panel-label">What TURUK delivers</div>
+                <div class="panel-title">Credible digital presence, stronger visuals, and faster creative execution.</div>
+              </div>
+              <div class="status-pill">Available worldwide</div>
             </div>
-            <div class="status-pill">Available worldwide</div>
-          </div>
-          <div class="panel-stack">
-            <article class="panel-card">
-              <h3>Business websites</h3>
-              <p>Mobile-first sites and landing pages designed to build trust, communicate clearly, and generate enquiries.</p>
-            </article>
-            <article class="panel-card">
-              <h3>AI ad creatives</h3>
-              <p>Campaign visuals and concepts for social media, paid ads, launches, and local promotions.</p>
-            </article>
-            <article class="panel-card">
-              <h3>AI films and video</h3>
-              <p>Short AI-assisted videos for reels, promos, brand storytelling, and fast-moving content campaigns.</p>
-            </article>
-            <figure class="image-frame">
-              <img
-                src="./assets/turuk-hero-placeholder.png"
-                alt="Preview image for TURUK studio hero section"
-                width="1200"
-                height="900"
-                loading="eager"
-                class="section-image"
-              />
-              <figcaption>Replace <strong>turuk-hero-placeholder.png</strong> with your main studio, website, or campaign visual.</figcaption>
-            </figure>
+
+            <div class="hero-value-grid">
+              <article class="hero-value-card">
+                <div class="panel-label">Web</div>
+                <h3>Business websites</h3>
+                <p>Mobile-first sites and landing pages designed to build trust, communicate clearly, and generate enquiries.</p>
+              </article>
+
+              <article class="hero-value-card">
+                <div class="panel-label">Ads</div>
+                <h3>AI ad creatives</h3>
+                <p>Campaign visuals and concepts for social media, paid ads, launches, and local promotions.</p>
+              </article>
+
+              <article class="hero-value-card">
+                <div class="panel-label">Video</div>
+                <h3>AI films and video</h3>
+                <p>Short AI-assisted videos for reels, promos, brand storytelling, and fast-moving content campaigns.</p>
+              </article>
+            </div>
           </div>
         </aside>
       </div>
@@ -937,14 +902,6 @@
 
         <div class="work-grid">
           <article class="work-card featured">
-            <img
-              src="./assets/project-website-placeholder.png"
-              alt="Placeholder image for a TURUK website project"
-              width="1200"
-              height="800"
-              loading="lazy"
-              class="work-image"
-            />
             <div class="work-kicker">Featured concept</div>
             <h3>Service business website with stronger enquiry flow.</h3>
             <p>
@@ -966,34 +923,23 @@
             </div>
           </article>
 
-          <div class="work-grid" style="grid-template-columns: 1fr;">
-            <article class="work-card">
-              <img
-                src="./assets/project-poster-placeholder.png"
-                alt="Placeholder image for TURUK poster or ad creative work"
-                width="1200"
-                height="800"
-                loading="lazy"
-                class="work-image"
-              />
-              <div class="work-kicker">Visual campaign concept</div>
-              <h3>Ad creative system for local offers and launches.</h3>
-              <p>Promo-ready creative direction for businesses that need quick, polished visual output across multiple social platforms.</p>
-            </article>
-            <article class="work-card">
-              <img
-                src="./assets/project-video-placeholder.png"
-                alt="Placeholder image for TURUK AI film or video concept"
-                width="1200"
-                height="800"
-                loading="lazy"
-                class="work-image"
-              />
-              <div class="work-kicker">Short-form video concept</div>
-              <h3>AI-assisted film for a product or service promotion.</h3>
-              <p>Short narrative or promotional video structure designed for reels, brand storytelling, or fast campaign deployment.</p>
-            </article>
-          </div>
+          <article class="work-card">
+            <div class="work-kicker">Visual campaign concept</div>
+            <h3>Ad creative system for local offers and launches.</h3>
+            <p>Promo-ready creative direction for businesses that need quick, polished visual output across multiple social platforms.</p>
+          </article>
+
+          <article class="work-card">
+            <div class="work-kicker">Short-form video concept</div>
+            <h3>AI-assisted film for a product or service promotion.</h3>
+            <p>Short narrative or promotional video structure designed for reels, brand storytelling, or fast campaign deployment.</p>
+          </article>
+
+          <article class="work-card">
+            <div class="work-kicker">Brand support concept</div>
+            <h3>Visual identity support for everyday business communication.</h3>
+            <p>Logo direction, poster design, thumbnails, and campaign support that help the business look more complete and consistent online.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -1095,11 +1041,13 @@
       const root = document.documentElement;
       const toggle = document.querySelector('[data-theme-toggle]');
       let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
       function renderIcon(mode) {
         return mode === 'dark'
           ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2"></path><path d="M12 21v2"></path><path d="M4.22 4.22l1.42 1.42"></path><path d="M18.36 18.36l1.42 1.42"></path><path d="M1 12h2"></path><path d="M21 12h2"></path><path d="M4.22 19.78l1.42-1.42"></path><path d="M18.36 5.64l1.42-1.42"></path></svg>'
           : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
       }
+
       function applyTheme(mode) {
         root.setAttribute('data-theme', mode);
         if (toggle) {
@@ -1107,7 +1055,9 @@
           toggle.setAttribute('aria-label', mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
         }
       }
+
       applyTheme(theme);
+
       if (toggle) {
         toggle.addEventListener('click', function () {
           theme = theme === 'dark' ? 'light' : 'dark';
