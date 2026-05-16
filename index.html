@@ -1,903 +1,1121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TURUK – Web Development, AI Ads, AI Films & Design Studio</title>
-  <meta
-    name="description"
-    content="TURUK builds business websites, AI-powered ad creatives, AI films, logos, posters, and social media designs for businesses, creators, and brands worldwide."
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TURUK — Web Development, AI Ads, AI Films & Design Studio</title>
+  <meta name="description" content="TURUK builds modern business websites, AI-powered ad creatives, AI films, logos, posters, and social media design for businesses, creators, and growing brands." />
+  <meta name="keywords" content="web development, AI ads, AI films, logo design, poster design, social media design, business website, Kerala design studio, TURUK" />
+  <meta name="author" content="TURUK" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="TURUK — Web Development, AI Ads, AI Films & Design Studio" />
+  <meta property="og:description" content="Modern websites, AI-powered ad creatives, AI films, and brand design for businesses that want to look credible and grow online." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="TURUK" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TURUK — Web Development, AI Ads, AI Films & Design Studio" />
+  <meta name="twitter:description" content="Modern websites, AI-powered ad creatives, AI films, and brand design for businesses and creators." />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=zodiak@400,500,700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2301696f'/%3E%3Cpath d='M16 18h32v8H36v20h-8V26H16z' fill='%23f9f8f4'/%3E%3C/svg%3E" />
   <style>
-    :root {
-      --bg: #f7f6f2;
-      --surface: #ffffff;
-      --surface-soft: #eef6f5;
-      --text: #0f172a;
-      --muted: #5b6470;
-      --border: #d8dfde;
-      --primary: #0f766e;
-      --primary-dark: #0a5b55;
-      --accent: #daf1ee;
-      --accent-soft: #edf8f6;
-      --shadow-soft: 0 10px 28px rgba(15, 23, 42, 0.06);
-      --shadow-strong: 0 18px 42px rgba(15, 23, 42, 0.13);
-      --radius-lg: 22px;
-      --radius-md: 18px;
-      --radius-sm: 12px;
-      --max-width: 1120px;
+    /* Art direction: premium small-business creative studio → calm, credible, modern
+       Palette: warm neutral surfaces with restrained teal accent
+       Typography: Zodiak + General Sans for editorial confidence and clean readability
+       Density: balanced with spacious hero and compact service sections */
+
+    :root,
+    [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.72rem + 0.2vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.84rem + 0.24vw, 1rem);
+      --text-base: clamp(1rem, 0.97rem + 0.2vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1.04rem + 0.6vw, 1.45rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1vw, 2.2rem);
+      --text-2xl: clamp(2.25rem, 1.35rem + 2.5vw, 4rem);
+
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+
+      --color-bg: #f7f6f2;
+      --color-surface: #fbfaf7;
+      --color-surface-2: #f2efea;
+      --color-surface-offset: #ece8e1;
+      --color-border: rgba(40, 37, 29, 0.12);
+      --color-divider: rgba(40, 37, 29, 0.08);
+      --color-text: #28251d;
+      --color-text-muted: #66635d;
+      --color-text-faint: #96928c;
+      --color-text-inverse: #f8f7f3;
+      --color-primary: #01696f;
+      --color-primary-hover: #0c4e54;
+      --color-primary-soft: #dcebea;
+      --color-success: #3f6e25;
+      --shadow-sm: 0 1px 2px rgba(28, 24, 19, 0.05);
+      --shadow-md: 0 10px 30px rgba(28, 24, 19, 0.08);
+      --shadow-lg: 0 20px 50px rgba(28, 24, 19, 0.12);
+      --radius-sm: 0.5rem;
+      --radius-md: 1rem;
+      --radius-lg: 1.5rem;
+      --radius-full: 999px;
+      --content-default: 1120px;
+      --font-body: 'General Sans', 'Inter', sans-serif;
+      --font-display: 'Zodiak', Georgia, serif;
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    * {
-      box-sizing: border-box;
+    [data-theme="dark"] {
+      --color-bg: #171614;
+      --color-surface: #1d1b19;
+      --color-surface-2: #23211f;
+      --color-surface-offset: #2a2724;
+      --color-border: rgba(248, 247, 243, 0.12);
+      --color-divider: rgba(248, 247, 243, 0.08);
+      --color-text: #ede9e2;
+      --color-text-muted: #b7b0a7;
+      --color-text-faint: #8a837b;
+      --color-text-inverse: #171614;
+      --color-primary: #59a0a5;
+      --color-primary-hover: #76b4b8;
+      --color-primary-soft: rgba(89, 160, 165, 0.12);
+      --color-success: #76a95b;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.28);
+      --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.36);
     }
 
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme]) {
+        --color-bg: #171614;
+        --color-surface: #1d1b19;
+        --color-surface-2: #23211f;
+        --color-surface-offset: #2a2724;
+        --color-border: rgba(248, 247, 243, 0.12);
+        --color-divider: rgba(248, 247, 243, 0.08);
+        --color-text: #ede9e2;
+        --color-text-muted: #b7b0a7;
+        --color-text-faint: #8a837b;
+        --color-text-inverse: #171614;
+        --color-primary: #59a0a5;
+        --color-primary-hover: #76b4b8;
+        --color-primary-soft: rgba(89, 160, 165, 0.12);
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
     html {
       scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
-
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-                   "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #fdfdfb 0, #f7f6f2 38%, #edf2f4 100%);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      min-height: 100dvh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.65;
+      color: var(--color-text);
+      background:
+        radial-gradient(circle at top left, rgba(1, 105, 111, 0.06), transparent 30%),
+        linear-gradient(180deg, var(--color-bg), var(--color-surface));
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button { border: 0; background: none; cursor: pointer; }
+    :focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    .skip-link {
+      position: absolute;
+      left: var(--space-4);
+      top: -100px;
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-sm);
+      z-index: 1001;
     }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    button {
-      font: inherit;
-    }
+    .skip-link:focus { top: var(--space-4); }
 
     .container {
-      width: min(92%, var(--max-width));
-      margin: 0 auto;
+      width: min(calc(100% - 2rem), var(--content-default));
+      margin-inline: auto;
     }
 
     .section {
-      padding: 80px 0;
+      padding-block: clamp(var(--space-16), 10vw, var(--space-24));
     }
 
-    .section-label {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .tag {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--primary-dark);
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
+      gap: var(--space-2);
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      background: color-mix(in srgb, var(--color-surface) 92%, var(--color-primary-soft));
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      font-weight: 600;
       letter-spacing: 0.12em;
-      margin-bottom: 18px;
+      text-transform: uppercase;
     }
 
-    .tag-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.12);
+    .eyebrow-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--color-success);
+      box-shadow: 0 0 0 0.3rem color-mix(in srgb, var(--color-success) 18%, transparent);
     }
 
-    /* Header / Nav */
-    header {
+    .site-header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(247, 246, 242, 0.96);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      background: color-mix(in srgb, var(--color-bg) 86%, transparent);
+      border-bottom: 1px solid var(--color-divider);
     }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      padding: 14px 0;
+      gap: var(--space-6);
+      min-height: 4.75rem;
     }
 
-    .logo {
-      display: flex;
+    .brand {
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: var(--space-3);
+      min-height: 44px;
     }
 
-    .logo-mark {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 25% 0%, #22c55e 0, #0f766e 45%, #0a5b55 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #e0f2f1;
-      font-size: 16px;
-      font-weight: 800;
-      box-shadow: 0 0 18px rgba(15, 118, 110, 0.45);
+    .brand-mark {
+      width: 2.7rem;
+      height: 2.7rem;
+      padding: 0.45rem;
+      border-radius: 0.9rem;
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      box-shadow: var(--shadow-md);
     }
 
-    .logo-text-main {
-      font-size: 21px;
-      font-weight: 800;
+    .brand-name {
+      font-size: 1.05rem;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--primary-dark);
     }
 
-    .logo-text-sub {
-      font-size: 12px;
-      color: var(--muted);
+    .brand-sub {
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: var(--space-5);
       flex-wrap: wrap;
-      font-size: 14px;
-      font-weight: 600;
     }
 
     .nav-links a {
-      position: relative;
-      color: var(--muted);
-      padding-block: 4px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      font-weight: 500;
     }
 
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #0f766e, #22c55e);
-      transition: width 0.2s ease-out;
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
     }
 
-    .nav-links a:hover {
-      color: var(--primary-dark);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
+    .theme-toggle {
+      width: 44px;
+      height: 44px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid var(--color-border);
+      color: var(--color-text);
+      background: var(--color-surface);
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      padding: 12px 20px;
-      border-radius: var(--radius-sm);
-      font-weight: 700;
-      font-size: 14px;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+      gap: 0.55rem;
+      min-height: 48px;
+      padding: 0.85rem 1.2rem;
+      border-radius: var(--radius-full);
       border: 1px solid transparent;
-      cursor: pointer;
-      white-space: nowrap;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      transition: transform var(--transition-interactive), background var(--transition-interactive), border-color var(--transition-interactive), box-shadow var(--transition-interactive), color var(--transition-interactive);
     }
 
+    .btn:hover { transform: translateY(-1px); }
     .btn-primary {
-      background: linear-gradient(135deg, #0f766e, #0a5b55);
-      color: #ffffff;
-      box-shadow: 0 12px 28px rgba(15, 118, 110, 0.35);
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      box-shadow: var(--shadow-md);
     }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      background: linear-gradient(135deg, #0f766e, #065f46);
-      box-shadow: 0 14px 32px rgba(15, 118, 110, 0.4);
-    }
-
+    .btn-primary:hover { background: var(--color-primary-hover); }
     .btn-secondary {
-      background: #f8fafc;
-      border-color: var(--border);
-      color: var(--text);
+      border-color: var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
     }
-
     .btn-secondary:hover {
-      background: #e2f3f0;
-      border-color: #bcd9d4;
+      background: var(--color-surface-2);
+      border-color: color-mix(in srgb, var(--color-text) 20%, transparent);
     }
 
-    /* Hero */
     .hero {
-      padding: 96px 0 72px;
+      padding-top: clamp(var(--space-16), 9vw, var(--space-24));
+      padding-bottom: var(--space-16);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-      gap: 40px;
-      align-items: center;
+      grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
+      gap: clamp(var(--space-8), 5vw, var(--space-16));
+      align-items: end;
     }
 
-    .hero h1 {
-      font-size: clamp(2.6rem, 5vw, 3.9rem);
-      line-height: 1.05;
-      margin: 0 0 18px;
+    .hero-copy h1,
+    .section-heading h2,
+    .contact-card h2,
+    .quote-card h3,
+    .service-card h3,
+    .work-card h3,
+    .process-step h3,
+    .trust-item h3 {
+      font-family: var(--font-display);
+      font-weight: 500;
       letter-spacing: -0.03em;
     }
 
-    .hero h1 span {
-      background: linear-gradient(120deg, #0f766e, #22c55e);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .hero-copy h1 {
+      margin: var(--space-6) 0 var(--space-5);
+      font-size: var(--text-2xl);
+      line-height: 0.98;
+      max-width: 12ch;
     }
 
-    .hero p {
-      font-size: 17px;
-      color: var(--muted);
-      max-width: 650px;
-      margin: 0 0 24px;
+    .hero-copy p {
+      margin: 0 0 var(--space-6);
+      max-width: 60ch;
+      color: var(--color-text-muted);
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
+    .hero-copy strong { color: var(--color-text); }
 
-    .hero-note {
-      font-size: 13px;
-      color: #6b7280;
-      margin-bottom: 28px;
-    }
-
-    .hero-note strong {
-      color: var(--primary-dark);
-    }
-
-    .hero-points {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .hero-point,
-    .card,
-    .project,
-    .about-box,
-    .contact-box,
-    .price-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-soft);
-      transition: transform 0.18s ease, box-shadow 0.2s ease, border-color 0.18s ease;
-    }
-
-    .hero-point {
-      padding: 16px 16px 14px;
-      font-size: 14px;
-    }
-
-    .hero-point strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 16px;
-      color: var(--primary-dark);
-    }
-
-    .hero-point:hover {
-      transform: translateY(-2px);
-      border-color: #c3ddd8;
-      box-shadow: var(--shadow-strong);
-    }
-
-    /* Hero visual */
-    .hero-visual {
-      padding: 26px 24px;
-      border-radius: var(--radius-lg);
-      background: radial-gradient(circle at top left, #f3fbf9 0, #ffffff 38%, #edf6f5 100%);
-      border: 1px solid #d8e7e4;
-      box-shadow: 0 18px 40px rgba(148, 163, 184, 0.25);
-    }
-
-    .hero-visual-label {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #64748b;
-      margin-bottom: 10px;
-    }
-
-    .hero-visual-heading {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: var(--primary-dark);
-    }
-
-    .mini-card {
-      background: #ffffff;
-      border: 1px solid #dde7e4;
-      border-radius: var(--radius-md);
-      padding: 16px 16px 14px;
-      margin-bottom: 14px;
-      font-size: 14px;
-    }
-
-    .mini-card:last-child {
-      margin-bottom: 0;
-    }
-
-    .mini-card h3 {
-      margin: 0 0 6px;
-      font-size: 16px;
-    }
-
-    .mini-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* Section titles */
-    .section-title {
-      max-width: 720px;
-      margin-bottom: 30px;
-    }
-
-    .section-title h2 {
-      margin: 0 0 10px;
-      font-size: 32px;
-      letter-spacing: -0.02em;
-    }
-
-    .section-title p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    /* Services */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .card {
-      padding: 24px 22px;
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, #ffffff 0, #f9fdfc 100%);
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top left, rgba(13, 148, 136, 0.12), transparent 55%);
-      opacity: 0;
-      transition: opacity 0.2s ease-out;
-      pointer-events: none;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      border-color: #c5dfd8;
-      box-shadow: var(--shadow-strong);
-    }
-
-    .card:hover::before {
-      opacity: 1;
-    }
-
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 20px;
-    }
-
-    .card p {
-      margin-bottom: 16px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .service-link {
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .pricing-row {
-      margin-top: 24px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .price-box {
-      padding: 18px 20px;
-      background: #fdfefe;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .price-box strong {
-      display: block;
-      font-size: 19px;
-      color: var(--primary-dark);
-    }
-
-    .price-box span {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    /* Portfolio */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .project {
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      background: #ffffff;
-    }
-
-    .project-image {
-      height: 170px;
-      background: linear-gradient(135deg, #e3f4f1, #f4eadf);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--primary-dark);
-    }
-
-    .project-content {
-      padding: 18px 18px 20px;
-      font-size: 14px;
-    }
-
-    .project-content h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
-    }
-
-    .project-content p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .project:hover {
-      transform: translateY(-3px);
-      border-color: #d3e1de;
-      box-shadow: var(--shadow-strong);
-    }
-
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
-    }
-
-    .about-box {
-      padding: 24px 24px 22px;
-    }
-
-    .about-box h3 {
-      margin-top: 0;
-      font-size: 22px;
-      margin-bottom: 8px;
-    }
-
-    .about-box p {
-      color: var(--muted);
-      margin-bottom: 12px;
-      font-size: 15px;
-    }
-
-    .about-box ul {
-      margin: 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    /* Contact */
-    .contact-box {
-      padding: 28px 26px 26px;
-      background: linear-gradient(135deg, #f2fbf9, #ffffff);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-strong);
-    }
-
+    .hero-actions,
     .contact-actions {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
-      margin-top: 18px;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .hero-meta {
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .hero-panel {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, white), var(--color-surface-2));
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: clamp(var(--space-6), 4vw, var(--space-8));
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-panel-top {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      align-items: flex-start;
+      margin-bottom: var(--space-6);
+    }
+
+    .panel-label {
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2);
+    }
+
+    .panel-title {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      max-width: 18ch;
+    }
+
+    .status-pill {
+      flex-shrink: 0;
+      padding: 0.55rem 0.8rem;
+      border-radius: var(--radius-full);
+      background: var(--color-primary-soft);
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .panel-stack {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .panel-card {
+      border: 1px solid var(--color-border);
+      border-radius: calc(var(--radius-lg) - var(--space-4));
+      background: var(--color-surface);
+      padding: var(--space-5);
+    }
+
+    .panel-card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .panel-card p {
+      margin: 0;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+
+    .image-frame {
+      margin: 0;
+      border: 1px solid var(--color-border);
+      border-radius: calc(var(--radius-lg) - var(--space-4));
+      background: var(--color-surface);
+      padding: var(--space-4);
+    }
+
+    .section-image,
+    .work-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      background: var(--color-surface-offset);
+    }
+
+    .section-image {
+      aspect-ratio: 4 / 3;
+      border-radius: calc(var(--radius-md) + 0.1rem);
+    }
+
+    .work-image {
+      aspect-ratio: 3 / 2;
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-5);
+    }
+
+    .image-frame figcaption {
+      margin-top: var(--space-3);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      line-height: 1.5;
+    }
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-12);
+    }
+
+    .trust-item,
+    .service-card,
+    .work-card,
+    .process-step,
+    .quote-card,
+    .contact-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .trust-item {
+      padding: var(--space-5);
+      border-radius: var(--radius-md);
+    }
+
+    .trust-item h3 {
+      font-size: 1.1rem;
+      margin: 0 0 0.35rem;
+    }
+
+    .trust-item p,
+    .service-card p,
+    .work-card p,
+    .process-step p,
+    .quote-card p,
+    .contact-card p,
+    .section-heading p {
+      color: var(--color-text-muted);
+    }
+
+    .section-heading {
+      display: grid;
+      gap: var(--space-3);
+      margin-bottom: var(--space-10);
+      max-width: 46rem;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(2rem, 1.3rem + 1.8vw, 3.1rem);
+    }
+
+    .services-grid,
+    .work-grid,
+    .process-grid,
+    .quote-grid,
+    .footer-grid {
+      display: grid;
+      gap: var(--space-5);
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .service-card,
+    .work-card,
+    .process-step,
+    .quote-card {
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      content-visibility: auto;
+      contain-intrinsic-size: 320px;
+    }
+
+    .service-kicker,
+    .work-kicker,
+    .process-number {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: var(--space-4);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .service-card h3,
+    .work-card h3,
+    .process-step h3,
+    .quote-card h3 {
+      margin: 0 0 var(--space-3);
+      font-size: 1.45rem;
+    }
+
+    .service-list,
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: var(--space-5) 0 0;
+      display: grid;
+      gap: var(--space-3);
+    }
+
+    .service-list li,
+    .contact-list li {
+      position: relative;
+      padding-left: 1rem;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .service-list li::before,
+    .contact-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 0.38rem;
+      height: 0.38rem;
+      border-radius: 50%;
+      background: var(--color-primary);
+    }
+
+    .services-note {
+      margin-top: var(--space-6);
+      padding: var(--space-5);
+      border-top: 1px solid var(--color-divider);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .work-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+    }
+
+    .work-card.featured {
+      background: linear-gradient(180deg, var(--color-surface), color-mix(in srgb, var(--color-surface-2) 88%, var(--color-primary-soft)));
+    }
+
+    .work-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .metric {
+      min-width: 7.5rem;
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      background: color-mix(in srgb, var(--color-primary-soft) 50%, var(--color-surface));
+      border: 1px solid color-mix(in srgb, var(--color-primary) 16%, transparent);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+      color: var(--color-text);
+    }
+
+    .process-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .quote-grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+
+    .quote-card {
+      min-height: 100%;
+    }
+
+    .quote-card em {
+      display: block;
+      margin-top: var(--space-5);
+      color: var(--color-text);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .contact-card {
+      border-radius: var(--radius-lg);
+      padding: clamp(var(--space-6), 5vw, var(--space-10));
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, white), var(--color-surface-2));
+      box-shadow: var(--shadow-lg);
+    }
+
+    .contact-card h2 {
+      margin: 0 0 var(--space-3);
+      font-size: clamp(2rem, 1.2rem + 1.8vw, 3rem);
+    }
+
+    .contact-card p {
+      margin: 0 0 var(--space-5);
+      max-width: 58ch;
     }
 
     .contact-note {
-      font-size: 13px;
-      color: #6b7280;
-      margin-top: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
     }
 
-    /* Footer */
-    footer {
-      padding: 26px 0 38px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 14px;
-      border-top: 1px solid #e2e8f0;
-      margin-top: 10px;
+    .footer {
+      padding: var(--space-8) 0 var(--space-10);
+      border-top: 1px solid var(--color-divider);
     }
 
-    /* Responsive */
-    @media (max-width: 920px) {
+    .footer-grid {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: var(--space-4);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 980px) {
+      .nav {
+        flex-wrap: wrap;
+        padding: var(--space-4) 0;
+      }
+      .nav-links {
+        order: 3;
+        width: 100%;
+        padding-top: var(--space-2);
+        border-top: 1px solid var(--color-divider);
+      }
       .hero-grid,
-      .cards,
-      .projects,
-      .about-grid,
-      .hero-points {
+      .work-grid,
+      .quote-grid,
+      .services-grid,
+      .process-grid,
+      .trust-strip,
+      .footer-grid {
         grid-template-columns: 1fr;
       }
-
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .section {
-        padding: 68px 0;
-      }
-
-      .hero {
-        padding-top: 80px;
-      }
+      .footer-nav { justify-content: flex-start; }
     }
 
     @media (max-width: 640px) {
-      .hero h1 {
-        font-size: 2.3rem;
+      .container {
+        width: min(calc(100% - 1.25rem), var(--content-default));
       }
-
-      .section-title h2 {
-        font-size: 28px;
-      }
-
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
-
+      .hero-copy h1 { max-width: 11ch; }
       .hero-actions,
-      .contact-actions {
+      .contact-actions,
+      .nav-actions {
         flex-direction: column;
+        align-items: stretch;
       }
-
-      .hero-visual {
-        margin-top: 10px;
+      .nav-actions .btn,
+      .hero-actions .btn,
+      .contact-actions .btn,
+      .theme-toggle {
+        width: 100%;
+      }
+      .theme-toggle {
+        border-radius: var(--radius-full);
       }
     }
   </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "TURUK",
+      "description": "TURUK builds business websites, AI-powered ad creatives, AI films, logos, posters, and social media design for businesses and creators.",
+      "telephone": "+91 7907835846",
+      "email": "turukfuturearts@gmail.com",
+      "areaServed": "Worldwide",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Alappuzha",
+        "addressRegion": "Kerala",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://wa.me/917907835846"
+      ],
+      "serviceType": [
+        "Website Development",
+        "AI Ad Creative Design",
+        "AI Film Production",
+        "Logo Design",
+        "Poster Design",
+        "Social Media Design"
+      ]
+    }
+  </script>
 </head>
 <body>
-  <header>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
     <div class="container nav">
-      <a href="#" class="logo" aria-label="TURUK home">
-        <div class="logo-mark">T</div>
-        <div>
-          <div class="logo-text-main">TURUK</div>
-          <div class="logo-text-sub">Web • AI Ads • AI Films • Design</div>
-        </div>
+      <a class="brand" href="#top" aria-label="TURUK home">
+        <svg class="brand-mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="4" y="4" width="56" height="56" rx="16" fill="currentColor" opacity="0.16"/>
+          <path d="M16 18H48V24H36V46H28V24H16V18Z" fill="currentColor"/>
+        </svg>
+        <span>
+          <span class="brand-name">TURUK</span>
+          <span class="brand-sub">Web • AI Ads • AI Films • Design</span>
+        </span>
       </a>
+
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#services">Services</a>
         <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="btn btn-primary">
-          Contact Us
-        </a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
       </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a class="btn btn-primary" href="https://wa.me/917907835846" target="_blank" rel="noopener noreferrer">Get a quote</a>
+      </div>
     </div>
   </header>
 
-  <main>
-    <!-- HERO -->
+  <main id="main-content">
     <section class="hero" id="top">
       <div class="container hero-grid">
-        <div>
-          <span class="tag">
-            <span class="tag-dot"></span>
-            Web Development • AI Ads • AI Films • Design Studio
-          </span>
-          <h1>
-            Websites, <span>AI-powered ads & films</span>, and brand design for businesses worldwide.
-          </h1>
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Creative studio for modern businesses</span>
+          <h1>Websites, AI ad creatives, films, and design that make your business look ready to grow.</h1>
           <p>
-            TURUK helps businesses build a stronger online presence through modern websites,
-            AI-powered ad creatives, AI films, logo design, posters, and social media visuals that look
-            professional and attract more customers.
+            TURUK helps businesses, startups, and creators build a sharper online presence with clean websites,
+            strong visual branding, AI-powered campaign creatives, and short-form video built for modern digital platforms.
           </p>
-
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">
-              Get a Free Project Quote
-            </a>
-            <a href="#services" class="btn btn-secondary">
-              View Services
-            </a>
+            <a class="btn btn-primary" href="https://wa.me/917907835846" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+            <a class="btn btn-secondary" href="#services">Explore services</a>
           </div>
-
-          <p class="hero-note">
-            <strong>Ideal for:</strong> small businesses, local brands, startups, creators,
-            and service providers who want a clear, modern online image with strong visuals and video.
-          </p>
-
-          <div class="hero-points">
-            <div class="hero-point">
-              <strong>Fast delivery</strong>
-              <span>Simple, modern creative work delivered with clarity and speed.</span>
-            </div>
-            <div class="hero-point">
-              <strong>AI-assisted workflow</strong>
-              <span>Smarter production helps reduce cost and speed up execution.</span>
-            </div>
-            <div class="hero-point">
-              <strong>Global service available</strong>
-              <span>Working with businesses, creators, and brands across locations.</span>
-            </div>
-          </div>
+          <p class="hero-meta">Free project discussion • Clear scope before work starts • Flexible for small businesses and creators</p>
         </div>
 
-        <aside class="hero-visual" aria-label="Overview of TURUK services">
-          <div class="hero-visual-label">What we focus on</div>
-          <div class="hero-visual-heading">Clean builds, clear messaging, strong visuals.</div>
-          <div class="mini-card">
-            <h3>Business Websites</h3>
-            <p>Responsive websites and landing pages built for trust, speed, and mobile users.</p>
+        <aside class="hero-panel" aria-label="Studio focus overview">
+          <div class="hero-panel-top">
+            <div>
+              <div class="panel-label">What TURUK delivers</div>
+              <div class="panel-title">Credible digital presence, stronger visuals, and faster creative execution.</div>
+            </div>
+            <div class="status-pill">Available worldwide</div>
           </div>
-          <div class="mini-card">
-            <h3>AI Ad Creatives</h3>
-            <p>Promotional concepts and visuals for Instagram, Facebook, and YouTube campaigns.</p>
-          </div>
-          <div class="mini-card">
-            <h3>AI Films & Video</h3>
-            <p>Short AI films and ad videos tailored for digital campaigns, reels, and promos.</p>
+          <div class="panel-stack">
+            <article class="panel-card">
+              <h3>Business websites</h3>
+              <p>Mobile-first sites and landing pages designed to build trust, communicate clearly, and generate enquiries.</p>
+            </article>
+            <article class="panel-card">
+              <h3>AI ad creatives</h3>
+              <p>Campaign visuals and concepts for social media, paid ads, launches, and local promotions.</p>
+            </article>
+            <article class="panel-card">
+              <h3>AI films and video</h3>
+              <p>Short AI-assisted videos for reels, promos, brand storytelling, and fast-moving content campaigns.</p>
+            </article>
+            <figure class="image-frame">
+              <img
+                src="./assets/turuk-hero-placeholder.jpg"
+                alt="Preview image for TURUK studio hero section"
+                width="1200"
+                height="900"
+                loading="eager"
+                class="section-image"
+              />
+              <figcaption>Replace <strong>turuk-hero-placeholder.jpg</strong> with your main studio, website, or campaign visual.</figcaption>
+            </figure>
           </div>
         </aside>
       </div>
-    </section>
 
-    <!-- SERVICES -->
-    <section id="services" class="section">
-      <div class="container">
-        <div class="section-title">
-          <div class="section-label">Services</div>
-          <h2>Digital, video, and creative support for modern businesses</h2>
-          <p>
-            Clear, practical services for businesses, local brands, creators, and startups that
-            want a stronger online image, better visuals, and engaging AI-driven content. [web:114][web:119]
-          </p>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <h3>Website Development</h3>
-            <p>
-              Business websites, landing pages, service pages, and portfolio sites built with clean
-              layouts, mobile-friendly structure, and fast loading performance.
-            </p>
-            <a href="#contact" class="service-link">Request this service</a>
-          </article>
-
-          <article class="card">
-            <h3>AI-Powered Ads & Creatives</h3>
-            <p>
-              AI-assisted ad concepts, banners, promo visuals, and campaign creatives for
-              businesses promoting products or services online across social and search.
-            </p>
-            <a href="#contact" class="service-link">Request this service</a>
-          </article>
-
-          <article class="card">
-            <h3>AI Films & Video Content</h3>
-            <p>
-              Short AI films, ad films, explainer clips, and social media videos designed for
-              campaigns, product launches, and brand storytelling. Ideal for reels, shorts, and promos. [web:111][web:114][web:119]
-            </p>
-            <a href="#contact" class="service-link">Request this service</a>
-          </article>
-
-          <article class="card">
-            <h3>Logo & Brand Design</h3>
-            <p>
-              Professional logo concepts, brand styling direction, and visual identity support
-              to make your business look more polished and memorable.
-            </p>
-            <a href="#contact" class="service-link">Request this service</a>
-          </article>
-
-          <article class="card">
-            <h3>Poster & Social Media Design</h3>
-            <p>
-              Posters, event creatives, thumbnails, and social media designs for promotions,
-              announcements, launches, and local campaigns.
-            </p>
-            <a href="#contact" class="service-link">Request this service</a>
-          </article>
-        </div>
-
-        <div class="pricing-row">
-          <div class="price-box">
-            <strong>Flexible pricing</strong>
-            <span>
-              Pricing depends on the type of project, scope of work, and design or video requirements.
-              Share your budget range and we’ll suggest the best options.
-            </span>
-          </div>
-        </div>
+      <div class="container trust-strip" aria-label="Studio trust points">
+        <article class="trust-item">
+          <h3>Clear communication</h3>
+          <p>You get direct discussion on scope, deliverables, and timelines before the project begins.</p>
+        </article>
+        <article class="trust-item">
+          <h3>Built for mobile users</h3>
+          <p>Every website and landing page is designed to look professional and work smoothly on phones first.</p>
+        </article>
+        <article class="trust-item">
+          <h3>Flexible execution</h3>
+          <p>From a single poster to a full website and campaign package, the service can scale with your need.</p>
+        </article>
       </div>
     </section>
 
-    <!-- WORK -->
-    <section id="work" class="section">
+    <section class="section" id="services">
       <div class="container">
-        <div class="section-title">
-          <div class="section-label">Portfolio</div>
-          <h2>Sample work and concept examples</h2>
+        <div class="section-heading">
+          <span class="eyebrow">Services</span>
+          <h2>Creative and digital support for businesses that want a modern, credible image.</h2>
           <p>
-            Real client projects and concept pieces will be added here. For now, these examples
-            show the type of work TURUK can provide across web, design, ads, and AI films. [web:114]
+            TURUK is structured around practical outcomes: helping businesses look trustworthy online, launch faster,
+            and communicate with better design, clearer messaging, and stronger short-form content.
           </p>
         </div>
 
-        <div class="projects">
-          <article class="project">
-            <div class="project-image">Website Demo</div>
-            <div class="project-content">
-              <h3>Business Website Concept</h3>
-              <p>
-                A sample website layout for service businesses that need a clean online presence
-                and a strong contact flow.
-              </p>
-            </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-kicker">01 • Website development</div>
+            <h3>Clean websites that help customers take action.</h3>
+            <p>Business websites, landing pages, service pages, and portfolio sites built for clarity, responsiveness, and stronger first impressions.</p>
+            <ul class="service-list">
+              <li>Service business websites and landing pages</li>
+              <li>Portfolio and brand presence pages</li>
+              <li>Mobile-friendly layouts with strong contact flow</li>
+            </ul>
           </article>
 
-          <article class="project">
-            <div class="project-image">Brand Concept</div>
-            <div class="project-content">
-              <h3>Logo & Poster Design</h3>
-              <p>
-                A placeholder concept showing how branding and promotional design can be presented
-                for business marketing.
-              </p>
-            </div>
+          <article class="service-card">
+            <div class="service-kicker">02 • AI ad creatives</div>
+            <h3>Promotional visuals made for digital campaigns.</h3>
+            <p>AI-assisted concepts, ad banners, and social creatives for businesses running promotions, launches, or paid campaigns.</p>
+            <ul class="service-list">
+              <li>Instagram and Facebook ad creatives</li>
+              <li>Launch visuals and promo concepts</li>
+              <li>Campaign-ready static and short-form assets</li>
+            </ul>
           </article>
 
-          <article class="project">
-            <div class="project-image">AI Film Idea</div>
-            <div class="project-content">
-              <h3>AI Ad Film for Social</h3>
-              <p>
-                A concept for a short AI-generated video ad, built for reels and short-form platforms
-                to highlight offers and brand story. [web:111][web:114]
-              </p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-title">
-          <div class="section-label">About</div>
-          <h2>About TURUK</h2>
-          <p>
-            TURUK is a creative and digital studio offering website development, AI ad creatives,
-            AI films, and business design support for clients worldwide.
-          </p>
-        </div>
-
-        <div class="about-grid">
-          <article class="about-box">
-            <h3>Who we work with</h3>
-            <p>
-              We work with businesses, startups, creators, service providers, and entrepreneurs
-              who want a stronger digital presence and better visual branding.
-            </p>
-            <p>
-              Our goal is to make quality web, design, and AI-driven video work more accessible,
-              professional, and effective.
-            </p>
+          <article class="service-card">
+            <div class="service-kicker">03 • AI films and video</div>
+            <h3>Short video built for reels, promos, and storytelling.</h3>
+            <p>AI-assisted ad films, explainer clips, and branded social video for businesses that need attention quickly.</p>
+            <ul class="service-list">
+              <li>Promo videos and product highlight clips</li>
+              <li>Short brand films for digital campaigns</li>
+              <li>Reels and short-form concept storytelling</li>
+            </ul>
           </article>
 
-          <article class="about-box">
-            <h3>Why choose us</h3>
-            <ul>
-              <li>Fast delivery and clear communication.</li>
-              <li>AI-assisted workflows for quicker execution and content at scale. [web:117]</li>
-              <li>Practical design and video for modern business needs.</li>
-              <li>Flexible service packages that can scale later.</li>
+          <article class="service-card">
+            <div class="service-kicker">04 • Brand and design</div>
+            <h3>Visual design that makes the business feel more complete.</h3>
+            <p>Logo direction, posters, social media creatives, thumbnails, and business design support for day-to-day brand communication.</p>
+            <ul class="service-list">
+              <li>Logo concepts and visual direction</li>
+              <li>Poster and event design</li>
+              <li>Social media posts and thumbnails</li>
             </ul>
           </article>
         </div>
+
+        <div class="services-note">
+          Pricing depends on the scope, deliverables, and production depth. A smaller task can start simple, and broader packages can be planned in stages.
+        </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
+    <section class="section" id="work">
       <div class="container">
-        <div class="contact-box">
-          <div class="section-title" style="margin-bottom: 14px;">
-            <div class="section-label">Contact</div>
-            <h2>Let’s Work Together</h2>
-            <p>
-              Need a website, AI film, ad creative, logo, poster, or full business design support?
-              Contact TURUK for a quick discussion about your project.
-            </p>
-          </div>
-
-          <div class="contact-actions">
-            <a
-              href="https://wa.me/918089933994"
-              class="btn btn-primary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Chat on WhatsApp
-            </a>
-            <a href="mailto:learnfast.aiacademy@gmail.com" class="btn btn-secondary">
-              Send an Email
-            </a>
-          </div>
-          <p class="contact-note">
-            Share what you do, what you need (website, branding, ads, AI films, or a mix) and any deadlines.
+        <div class="section-heading">
+          <span class="eyebrow">Selected direction</span>
+          <h2>Work approach designed around business credibility and clear communication.</h2>
+          <p>
+            Until more public case studies are published, these examples describe the type of outcomes TURUK is built to deliver for businesses, creators, and local brands.
           </p>
         </div>
+
+        <div class="work-grid">
+          <article class="work-card featured">
+            <img
+              src="./assets/project-website-placeholder.jpg"
+              alt="Placeholder image for a TURUK website project"
+              width="1200"
+              height="800"
+              loading="lazy"
+              class="work-image"
+            />
+            <div class="work-kicker">Featured concept</div>
+            <h3>Service business website with stronger enquiry flow.</h3>
+            <p>
+              A clean business website concept focused on trust, simple navigation, mobile readability, and a clear path from visitor interest to WhatsApp or email contact.
+            </p>
+            <div class="work-metrics">
+              <div class="metric">
+                <strong>Mobile-first</strong>
+                <span>Built to look solid on phones and tablets</span>
+              </div>
+              <div class="metric">
+                <strong>Clear CTA</strong>
+                <span>Contact options placed where they matter</span>
+              </div>
+              <div class="metric">
+                <strong>Brand-ready</strong>
+                <span>Clean layout that supports future growth</span>
+              </div>
+            </div>
+          </article>
+
+          <div class="work-grid" style="grid-template-columns: 1fr;">
+            <article class="work-card">
+              <img
+                src="./assets/project-poster-placeholder.jpg"
+                alt="Placeholder image for TURUK poster or ad creative work"
+                width="1200"
+                height="800"
+                loading="lazy"
+                class="work-image"
+              />
+              <div class="work-kicker">Visual campaign concept</div>
+              <h3>Ad creative system for local offers and launches.</h3>
+              <p>Promo-ready creative direction for businesses that need quick, polished visual output across multiple social platforms.</p>
+            </article>
+            <article class="work-card">
+              <img
+                src="./assets/project-video-placeholder.jpg"
+                alt="Placeholder image for TURUK AI film or video concept"
+                width="1200"
+                height="800"
+                loading="lazy"
+                class="work-image"
+              />
+              <div class="work-kicker">Short-form video concept</div>
+              <h3>AI-assisted film for a product or service promotion.</h3>
+              <p>Short narrative or promotional video structure designed for reels, brand storytelling, or fast campaign deployment.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Process</span>
+          <h2>A straightforward workflow from idea to delivery.</h2>
+          <p>
+            The process is kept simple so clients know what is happening, what is being delivered, and how the final output supports the business goal.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-step">
+            <div class="process-number">Step 01</div>
+            <h3>Discuss the need</h3>
+            <p>You share the business, the goal, the type of work needed, and any deadline or budget range.</p>
+          </article>
+          <article class="process-step">
+            <div class="process-number">Step 02</div>
+            <h3>Define the scope</h3>
+            <p>The deliverables, timeline, and creative direction are clarified before production starts.</p>
+          </article>
+          <article class="process-step">
+            <div class="process-number">Step 03</div>
+            <h3>Build and refine</h3>
+            <p>The website, design, or video work is produced with revision feedback where required.</p>
+          </article>
+          <article class="process-step">
+            <div class="process-number">Step 04</div>
+            <h3>Deliver with clarity</h3>
+            <p>You receive polished final output ready to publish, present, or use in campaigns.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="why-turuk-heading">
+      <div class="container quote-grid">
+        <article class="quote-card">
+          <div class="service-kicker">Why TURUK</div>
+          <h3 id="why-turuk-heading">Built for businesses that need quality without unnecessary complexity.</h3>
+          <p>
+            TURUK combines design thinking, web execution, and AI-assisted creative workflows to help smaller brands and growing businesses access sharper digital output without the friction of a large agency setup.
+          </p>
+          <em>Fast enough for modern content needs, careful enough to protect brand credibility.</em>
+        </article>
+
+        <article class="quote-card">
+          <div class="service-kicker">Best fit</div>
+          <h3>Good for local brands, startups, creators, and service businesses.</h3>
+          <p>
+            This studio is a strong fit when the need is practical: a better website, cleaner branding, stronger promotional visuals, or short-form video that helps the business look more established online.
+          </p>
+          <em>Start with one deliverable or combine web, design, and campaign support.</em>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <article class="contact-card">
+          <span class="eyebrow">Contact</span>
+          <h2>Let’s talk about your next website, campaign creative, or design project.</h2>
+          <p>
+            Share what your business does, what you need, and when you want it delivered. TURUK can help with websites, visual branding, ad creatives, posters, social media design, and AI-assisted video work.
+          </p>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="https://wa.me/917907835846" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+            <a class="btn btn-secondary" href="mailto:turukfuturearts@gmail.com" target="_blank" rel="noopener noreferrer">Send an email</a>
+          </div>
+          <ul class="contact-list" aria-label="Contact details and helpful notes">
+            <li>WhatsApp: +91 79078 35846</li>
+            <li>Email: turukfuturearts@gmail.com</li>
+            <li>Based in Kerala, working with clients worldwide</li>
+          </ul>
+          <div class="contact-note">Best first message: business type, required service, deadline, and approximate budget range.</div>
+        </article>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      © 2026 TURUK. Web development, AI creatives, AI films, and design services with global availability.
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>© 2026 TURUK. Web development, AI creatives, AI films, and design support for modern businesses.</div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.querySelector('[data-theme-toggle]');
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      function renderIcon(mode) {
+        return mode === 'dark'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2"></path><path d="M12 21v2"></path><path d="M4.22 4.22l1.42 1.42"></path><path d="M18.36 18.36l1.42 1.42"></path><path d="M1 12h2"></path><path d="M21 12h2"></path><path d="M4.22 19.78l1.42-1.42"></path><path d="M18.36 5.64l1.42-1.42"></path></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+      }
+      function applyTheme(mode) {
+        root.setAttribute('data-theme', mode);
+        if (toggle) {
+          toggle.innerHTML = renderIcon(mode);
+          toggle.setAttribute('aria-label', mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+        }
+      }
+      applyTheme(theme);
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          theme = theme === 'dark' ? 'light' : 'dark';
+          applyTheme(theme);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
